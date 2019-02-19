@@ -15,7 +15,10 @@ public class PhoneBook {
     public void add (String name, ArrayList<String> phoneNumber){
         directory.put(name, phoneNumber);
         }
-    public void remove (String name, ArrayList<String> phoneNumber){
-
+    public void remove (String name){
+        directory.remove(name);
+    }
+    public void lookup (String name){
+        directory.get(name);
     }
 }

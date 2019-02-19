@@ -14,7 +14,8 @@ public class PhoneBookTest {
     public void addTest (){
         // given
         String name = "Test1";
-        ArrayList<String> phoneNumber = "(302)372-8261", null;
+        ArrayList<String> phoneNumber = new ArrayList<String>();
+        phoneNumber.add("(302)372-8261");
         PhoneBook phoneBook = new PhoneBook();
         // when
         phoneBook.add(name, phoneNumber);
@@ -27,10 +28,26 @@ public class PhoneBookTest {
     public void removeTest (){
         // given
         String name = "Test1";
-        String phoneNumber = "(302)372-8261";
         PhoneBook phoneBook = new PhoneBook();
         // when
-        phoneBook.remove(name, phoneNumber);
+        phoneBook.remove(name);
         // then
+        String actual = phoneBook.lookup(name);
+        Assert.assertNotEquals(name, actual);
+    }
+
+    @Test
+    public void lookupTest(){
+        // given
+        String name = "Test1";
+        ArrayList<String> phoneNumber = new ArrayList<String>();
+        phoneNumber.add("(302)372-8261");
+        PhoneBook phoneBook = new PhoneBook();
+        // when
+        phoneBook.add(name, phoneNumber);
+        ArrayList<String> expected = phoneNumber;
+        // then
+        String actual = phoneBook.lookup(name);
+        Assert.assertEquals(expected, actual);
     }
 }
